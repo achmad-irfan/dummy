@@ -1,3 +1,12 @@
 {% extends "base.html" %} {% block content %}
-<h4>{{title}}</h4>
+<div class="detail_movie">
+  <div class="poster"><img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}" width="150" /></div>
+  <div class="information">
+    <h4>{{movie.title}} ({{ movie.release_date|slice:":4"}})</h4>
+    <h5>Release Date: {{ movie.release_date}}</h5>
+    <h5>Languange: {{movie.original_language}}</h5>
+    <h5>Sinopsis: {{movie.overview}}</h5>
+  </div>
+</div>
+
 {% endblock %}

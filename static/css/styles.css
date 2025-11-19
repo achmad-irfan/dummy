@@ -1,3 +1,16 @@
+@font-face {
+  font-family: "DKFaceYourFears";
+  src: url("../fonts/DK Face Your Fears.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Swamp Witch";
+  src: url("../fonts/Swamp Witch.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
   background-color: black;
   margin: 0;
@@ -21,6 +34,7 @@ body {
 .navbar {
   border-radius: 15px;
   border: 1px solid white;
+  font-family: "DKFaceYourFears", cursive;
 }
 
 .navbar-nav {
@@ -92,6 +106,35 @@ body {
 .top-movie {
   background-color: rgb(33, 33, 35);
 }
+
+/* Detail Movie */
+.detail_movie {
+  background-color: rgb(1, 4, 16);
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 30px;
+  color: white;
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+}
+
+.detail_movie img {
+  width: 275px;
+  height: 400px;
+}
+.detail_movie h4 {
+  font-family: "Swamp Witch", cursive;
+  font-size: 40px;
+  color: rgb(255, 0, 0);
+  text-shadow: 2px 2px 0 black, -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black; /* efek bayangan tebal */
+}
+
+.detail_movie h5 {
+  font-family: "DKFaceYourFears", cursive;
+  font-size: 25px;
+}
+/* End of Detail Movie */
+
 /* End of Content */
 
 /* Footer */

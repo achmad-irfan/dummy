@@ -39,7 +39,6 @@ def detail_movie(request, slug):
         return render(request, "404.html")  
     
     context = {
-        'title': movie['title'],
         'movie': movie
     }
     return render(request, 'detail_movie.html', context)
