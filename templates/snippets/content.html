@@ -1,0 +1,23 @@
+<div class="content">
+  <div class="upcoming">
+    <h5>Upcoming Horror Movies</h5>
+    <div class="movie-list">
+      {% for m in upcoming_movies %}
+      <div class="movie-item">
+        <img src="https://image.tmdb.org/t/p/w500{{ m.poster_path }}" alt="{{ m.title }}" width="150" />
+        <p class="title">{{ m.title }}</p>
+        <p>Release: {{ m.release_date }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="top-movie">
+    <h5>Top Horror Movie All Time</h5>
+    <div class="movie-list">
+      {% for m in top_movies %}
+      <img src="https://image.tmdb.org/t/p/w500{{ m.poster_path }}" alt="{{ m.title }}" width="150" />
+      <p class="title">{{ m.title }}</p>
+      {% endfor %}
+    </div>
+  </div>
+</div>
