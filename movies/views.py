@@ -18,3 +18,28 @@ def index(request):
         'top_movies':top_movies
     }
     return render(request,'index.html',context)
+
+
+def detail_movie(request, slug):
+    upcoming_movies = api.get_upcoming_movies()
+    top_movies = api.top_rating()
+    
+    
+    for movie in upcoming_movies + top_movies:
+        if 'slug' not in movie:
+            movie['slug'] = slugify(movie['title'])
+    
+    
+    all_movies = upcoming_movies + top_movies
+    
+   
+    movie = next((m for m in all_movies if m['slug'] == slug), None)
+    
+    if not movie:
+        return render(request, "404.html")  
+    
+    context = {
+        'title': movie['title'],
+        'movie': movie
+    }
+    return render(request, 'detail_movie.html', context)

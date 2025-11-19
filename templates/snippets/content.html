@@ -3,11 +3,13 @@
     <h5>Upcoming Horror Movies</h5>
     <div class="movie-list">
       {% for m in upcoming_movies %}
-      <div class="movie-item">
-        <img src="https://image.tmdb.org/t/p/w500{{ m.poster_path }}" alt="{{ m.title }}" width="150" />
-        <p class="title">{{ m.title }}</p>
-        <p>Release: {{ m.release_date }}</p>
-      </div>
+      <a href="/movie/{{m.slug}}/" class="movie-link">
+        <div class="movie-item">
+          <img src="https://image.tmdb.org/t/p/w500{{ m.poster_path }}" alt="{{ m.title }}" width="150" />
+          <p class="title">{{ m.title }}</p>
+          <p>Release: {{ m.release_date }}</p>
+        </div>
+      </a>
       {% endfor %}
     </div>
   </div>
