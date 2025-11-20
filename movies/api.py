@@ -31,6 +31,22 @@ def top_rating():
         "api_key": "d8d666fb30f19051784ac3645fdf05da",
         "with_genres": "27",
         "sort_by": "vote_average.desc",
+        "vote_count.gte": 500, 
+        }
+    
+    response= requests.get(url,params=params)
+    top_movies= response.json().get('results',[])
+    for movie in top_movies:
+        movie['slug']=slugify(movie['title'])
+        
+    return top_movies
+
+def best_2025():
+    url= 'https://api.themoviedb.org/3/discover/movie'
+    params = {
+        "api_key": "d8d666fb30f19051784ac3645fdf05da",
+        "with_genres": "27",
+        "sort_by": "vote_average.desc",
         "vote_count.gte": 100, 
         }
     

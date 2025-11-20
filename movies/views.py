@@ -11,7 +11,7 @@ def index(request):
         upcoming_movies,
         key=lambda m: datetime.strptime(m.get("release_date", "2100-01-01"), "%Y-%m-%d")
     )
-    top_movies= top_movies[:10]
+    top_movies= top_movies[:6]
     upcoming_movies=upcoming_movies[:5]
     context={
         'upcoming_movies':upcoming_movies,

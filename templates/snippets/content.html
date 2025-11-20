@@ -17,9 +17,26 @@
     <h5>Top Horror Movie All Time</h5>
     <div class="movie-list">
       {% for m in top_movies %}
-      <img src="https://image.tmdb.org/t/p/w500{{ m.poster_path }}" alt="{{ m.title }}" width="150" />
-      <p class="title">{{ m.title }}</p>
+      <a href="/movie/{{m.slug}}/" class="movie-link">
+        <img src="https://image.tmdb.org/t/p/w500{{ m.poster_path }}" alt="{{ m.title }}" width="150" />
+        <p class="title">{{ m.title }}</p>
+      </a>
       {% endfor %}
+    </div>
+  </div>
+  <div class="best-movie">
+    <div class="best">
+      <h5>Best Horror by Year</h5>
+      <div class="btn-group">
+        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Danger</button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Action</a></li>
+          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li><a class="dropdown-item" href="#">Separated link</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
