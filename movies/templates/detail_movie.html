@@ -21,21 +21,23 @@
       <p><strong>Language : </strong> {{ movie.original_language|upper }}</p>
       <p><strong>Duration : </strong> {{ movie.runtime }} min</p>
       <p><strong>Director : </strong> {{ movie.director }}</p>
-      <p><strong>Director : </strong> {{ movie.producer }}</p>
+      <p><strong>Producer : </strong> {{ movie.producer }}</p>
       <p><strong>Rating : </strong> {{ movie.vote_average|floatformat:1 }}</p>
     </div>
-
-    <!-- <div class="movie-overview">
-      <h3>Synopsis</h3>
-      <p>{{ movie.overview }}</p>
-    </div> -->
   </div>
+
+  <!-- Trailer -->
   {% if movie.trailer_id %}
   <div class="trailer">
     <h3>Trailer</h3>
     <iframe width="600" height="320" src="https://www.youtube.com/embed/{{ movie.trailer_id }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe>
+    <p>
+      <a class="yt-button" href="https://www.youtube.com/watch?v={{ movie.trailer_id }}" target="_blank"> Watch on YouTube </a>
   </div>
+    </p>
   {% endif %}
+
+<!-- Synopsis -->
   <div class="overview">
     <h3>Synopsis:</h3>
     <p>{{movie.overview}}</p>
@@ -55,6 +57,43 @@
       {% endfor %}
     </div>
   </div>
+
+  <!-- Gallery -->
+  <div class="gallery">
+  <h3>Scene Gallery</h3>
+  <div class="gallery-list">
+    {% for img in movie.gallery_backdrops %}
+      <div class="gallery-item">
+        <img src="{{ img }}" alt="Scene Image">
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Similar Movies -->
+{% if similar_movies %}
+<div class="similar-section">
+  <h3>Similar Movies</h3>
+
+  <div class="similar-list">
+    {% for sm in similar_movies %}
+   <a href="/movie/{{sm.slug}}/" class="similar-card">
+    <div class="poster-wrapper">
+        {% if sm.poster_full %}
+        <img src="{{ sm.poster_full }}" alt="{{ sm.title }}">
+        {% else %}
+        <div class="no-poster">No Image</div>
+        {% endif %}
+    </div>
+    <p class="similar-title">{{ sm.title }}</p>
+</a>
+
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+
 </div>
 
 {% endblock %}

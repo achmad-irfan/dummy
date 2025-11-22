@@ -38,7 +38,8 @@ def top_rating():
     response= requests.get(url,params=params)
     top_movies= response.json().get('results',[])
     for movie in top_movies:
-        movie['slug']=slugify(movie['title'])
+        movie['slug'] = slugify(movie['title'].replace(":", ""))
+
         
     return top_movies
 
@@ -54,8 +55,23 @@ def best_year():
     response= requests.get(url,params=params)
     top_movies= response.json().get('results',[])
     for movie in top_movies:
-        movie['slug']=slugify(movie['title'])
+        movie['slug'] = slugify(movie['title'].replace(":", ""))
+
         
     return top_movies
+    
+def get_similar_movies(movie_id):
+    url = f'https://api.themoviedb.org/3/movie/{movie_id}/similar'
 
+    params = {
+        "api_key": "d8d666fb30f19051784ac3645fdf05da",
+        "language": "en-US"
+    }
 
+    response = requests.get(url, params=params)
+    movies = response.json().get('results', [])
+
+    for m in movies:
+        m['slug'] = slugify(m.get('title', ''))
+
+    return movies

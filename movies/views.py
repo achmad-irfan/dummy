@@ -50,11 +50,11 @@ def detail_movie(request, slug):
 
     movie_id = movie["id"]
 
-    # Fetch detail lengkap termasuk credits + videos
+    # Fetch detail lengkap termasuk credits + videos + images
     url = f"https://api.themoviedb.org/3/movie/{movie_id}"
     params = {
         "api_key": "d8d666fb30f19051784ac3645fdf05da",
-        "append_to_response": "credits,videos"
+        "append_to_response": "credits,videos,images"
     }
 
     response = requests.get(url, params=params).json()
@@ -67,27 +67,80 @@ def detail_movie(request, slug):
 
     # Ambil trailer
     videos = response.get("videos", {}).get("results", [])
-    trailer = next((v for v in videos if v["type"] == "Trailer" and v["site"] == "YouTube"), None)
+    trailer = next(
+        (
+            v for v in videos
+            if v["site"] == "YouTube"
+            and v["type"] == "Trailer"
+            and (v.get("official") is True)
+        ),
+        None
+    )
+
+    if not trailer:
+        trailer = next(
+            (
+                v for v in videos
+                if v["site"] == "YouTube" and v["type"] == "Trailer"
+            ),
+            None
+        )
 
     movie["trailer_id"] = trailer["key"] if trailer else None
 
-    # Director
-    crew = response.get("credits", {}).get("crew", [])
-    director = next((c["name"] for c in crew if c["job"] == "Director"), "Unknown")
-    producer = next((c["name"] for c in crew if c["job"] == "Producer"), "Unknown")
-    movie["director"] = director
-    movie["producer"] = producer
+    # Images / Gallery
+    images = response.get("images", {})
+    movie["gallery_backdrops"] = [
+        f"https://image.tmdb.org/t/p/w780{img['file_path']}"
+        for img in images.get("backdrops", [])[:12]
+    ]
 
-    # Cast 
+    # Director & Producer
+    crew = response.get("credits", {}).get("crew", [])
+    movie["director"] = next((c["name"] for c in crew if c["job"] == "Director"), "Unknown")
+    movie["producer"] = next((c["name"] for c in crew if c["job"] == "Producer"), "Unknown")
+
+    # Cast (foto + nama)
     cast_list = response.get("credits", {}).get("cast", [])[:5]
     movie["cast_full"] = [
-    {
-        "name": c["name"],
-        "photo": f"https://image.tmdb.org/t/p/w300{c['profile_path']}" if c.get("profile_path") else None
-    }
-    for c in cast_list]
+        {
+            "name": c["name"],
+            "photo": f"https://image.tmdb.org/t/p/w300{c['profile_path']}"
+            if c.get("profile_path") else None
+        }
+        for c in cast_list
+    ]
 
-    context = {"movie": movie}
+    # ============================
+    #  SIMILAR MOVIES (NEW)
+    # ============================
+    similar_url = f"https://api.themoviedb.org/3/movie/{movie_id}/similar"
+    similar_params = {
+        "api_key": "d8d666fb30f19051784ac3645fdf05da",
+        "page": 1
+    }
+    similar_res = requests.get(similar_url, params=similar_params).json()
+
+    similar_movies = similar_res.get("results", [])[:6]
+
+    # Format data gambar poster
+    for sm in similar_movies:
+        sm["poster_full"] = (
+            f"https://image.tmdb.org/t/p/w300{sm['poster_path']}"
+            if sm.get("poster_path")
+            else None
+        )
+
+        
+        sm["slug"] = api.slugify(sm.get("title", ""))
+
+   
+    context = {
+        "movie": movie,
+        "similar_movies": similar_movies
+    }
+
     return render(request, "detail_movie.html", context)
+
 
 
