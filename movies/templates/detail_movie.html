@@ -4,7 +4,12 @@
   <div class="information">
     <h4>{{movie.title}} ({{ movie.release_date|slice:":4"}})</h4>
     <h5>Release Date: {{ movie.release_date}}</h5>
+    <h5>Status: {{ movie.status}}</h5>
     <h5>Languange: {{movie.original_language}}</h5>
+    <h5>Duration:{{movie.runtime}}</h5>
+    <h5>Director:{{movie.director}}</h5>
+    <h5>Vote Average:{{movie.popularity}}</h5>
+    <h5>Cast:{{movie.cast}}</h5>
     <h5>Sinopsis: {{movie.overview}}</h5>
   </div>
 </div>

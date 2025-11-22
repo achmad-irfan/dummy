@@ -26,19 +26,61 @@ body {
 }
 
 /* Navbar */
+.navbar {
+  border-radius: 10px;
+}
 .navbar img {
   width: 175px;
   height: 45px;
 }
 
-.navbar {
-  border-radius: 15px;
-  border: 1px solid white;
-  font-family: "DKFaceYourFears", cursive;
+.custom-navbar {
+  background-color: #0b0f19 !important;
+  padding: 12px 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.navbar-nav {
-  font-size: large;
+.custom-navbar .navbar-brand img {
+  height: 40px;
+  filter: brightness(1.2);
+}
+
+/* Search Form */
+.search-form {
+  position: relative;
+}
+
+.search-input {
+  border-radius: 20px;
+  padding: 8px 15px;
+  width: 200px;
+  transition: 0.3s ease-in-out;
+  background-color: #1c2333;
+  border: 1px solid #2c3247;
+  color: #fff;
+}
+
+.search-input:focus {
+  width: 260px;
+  border-color: #4ca3ff;
+  box-shadow: 0 0 10px rgba(76, 163, 255, 0.6);
+  background-color: #22293b;
+}
+
+.search-btn {
+  margin-left: 10px;
+  border-radius: 20px;
+  padding: 8px 18px;
+  background: linear-gradient(135deg, #3a67ff, #5ac8ff);
+  color: white;
+  border: none;
+  transition: 0.3s;
+}
+
+.search-btn:hover {
+  background: linear-gradient(135deg, #3357d3, #44b1ff);
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 /* End of Navbar */
 
@@ -59,9 +101,10 @@ body {
   color: white;
   padding: 10px;
   display: grid;
+  gap: 20px;
 }
 
-.content h5 {
+.content h4 {
   text-align: center;
 }
 
@@ -72,7 +115,31 @@ body {
   padding: 20px;
 }
 
+.movie-link {
+  position: relative;
+  display: inline-block;
+}
+
+.poster-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.rating {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: #e50914;
+  color: white;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
 .movie-item {
+  background-color: #02042f;
   border: 1px solid white;
   border-radius: 10px;
   padding: 10px;
@@ -80,6 +147,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.movie-item:hover,
+.movie-link:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.6), 0 0 30px rgba(229, 9, 20, 0.4);
 }
 
 .movie-item img {
@@ -105,6 +178,20 @@ body {
 
 .top-movie {
   background-color: rgb(33, 33, 35);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.best-movie {
+  border: 1px solid white;
+  padding: 10px 50px;
+  border-radius: 20px;
+}
+
+.rating-badge {
+  border: 1px solid white;
+  padding: 5px;
+  display: inline;
 }
 
 /* Detail Movie */
@@ -130,9 +217,10 @@ body {
 }
 
 .detail_movie h5 {
-  font-family: "DKFaceYourFears", cursive;
+  font-family: fantasy, cursive;
   font-size: 25px;
 }
+
 /* End of Detail Movie */
 
 /* End of Content */

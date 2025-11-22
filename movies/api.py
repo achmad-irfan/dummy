@@ -32,6 +32,7 @@ def top_rating():
         "with_genres": "27",
         "sort_by": "vote_average.desc",
         "vote_count.gte": 500, 
+        "primary_release_year": 2025
         }
     
     response= requests.get(url,params=params)
@@ -41,7 +42,7 @@ def top_rating():
         
     return top_movies
 
-def best_2025():
+def best_year():
     url= 'https://api.themoviedb.org/3/discover/movie'
     params = {
         "api_key": "d8d666fb30f19051784ac3645fdf05da",
@@ -56,3 +57,5 @@ def best_2025():
         movie['slug']=slugify(movie['title'])
         
     return top_movies
+
+
