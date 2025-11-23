@@ -46,41 +46,68 @@ body {
 }
 
 /* Search Form */
-.search-form {
+.nav-search {
   position: relative;
+  width: 250px; /* bisa diubah */
 }
 
-.search-input {
-  border-radius: 20px;
-  padding: 8px 15px;
-  width: 200px;
-  transition: 0.3s ease-in-out;
-  background-color: #1c2333;
-  border: 1px solid #2c3247;
-  color: #fff;
+/* Input search bar */
+#movieSearchInput {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: 0.2s;
 }
 
-.search-input:focus {
-  width: 260px;
-  border-color: #4ca3ff;
-  box-shadow: 0 0 10px rgba(76, 163, 255, 0.6);
-  background-color: #22293b;
+/* Efek fokus */
+#movieSearchInput:focus {
+  outline: none;
+  border-color: #aaa;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.15);
 }
 
-.search-btn {
-  margin-left: 10px;
-  border-radius: 20px;
-  padding: 8px 18px;
-  background: linear-gradient(135deg, #3a67ff, #5ac8ff);
-  color: white;
-  border: none;
-  transition: 0.3s;
+/* ------------------------------
+   DROPDOWN AUTOCOMPLETE
+--------------------------------*/
+
+#searchResults {
+  position: absolute;
+  top: 40px; /* jarak dari input */
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  display: block;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
 }
 
-.search-btn:hover {
-  background: linear-gradient(135deg, #3357d3, #44b1ff);
-  transform: translateY(-1px);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+#searchResults[hidden] {
+  display: none;
+}
+
+/* Item film */
+.search-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+/* Hover item */
+.search-item:hover {
+  background: #f3f3f3;
+}
+
+/* Kalau ingin icon loading */
+.search-loading {
+  padding: 10px;
+  font-size: 13px;
+  color: #555;
 }
 /* End of Navbar */
 
