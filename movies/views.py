@@ -125,11 +125,16 @@ def search_api(request):
     response = requests.get(url, params=params).json()
 
     results = []
-    for movie in response.get("results", [])[:10]:  # batasi 10
+    for movie in response.get("results", [])[:10]:
         results.append({
             "id": movie["id"],
             "title": movie["title"],
             "year": movie.get("release_date", "")[:4] if movie.get("release_date") else "",
+            "poster": (
+                f"https://image.tmdb.org/t/p/w92{movie['poster_path']}"
+                if movie.get("poster_path") else None
+            )
         })
 
     return JsonResponse({"results": results})
+
