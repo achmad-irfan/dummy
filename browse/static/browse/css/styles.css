@@ -1,3 +1,4 @@
+/* Banner Browse  */
 .browse {
   padding: 30px;
 }
@@ -19,9 +20,64 @@
   color: #00ffd9;
 }
 
+/* End of Banner Browse  */
+
+/* Filter */
+
 .filter {
   border: 1px solid #00f5e1;
-  padding: 30px 20px;
+  padding: 30px 60px;
   color: white;
   border-radius: 15px;
 }
+
+.form-movie {
+  display: grid;
+  grid-template-areas:
+    "name name name name"
+    "country lang ratingmovie sort";
+  gap: 10px;
+}
+
+.name {
+  grid-area: name;
+}
+
+.country {
+  grid-area: country;
+}
+
+.lang {
+  grid-area: lang;
+}
+
+.ratingmovie {
+  grid-area: ratingmovie;
+}
+.sort {
+  grid-area: sort;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  background-color: thistle;
+  border-radius: 4px;
+  padding: 7px;
+  margin-bottom: 10px;
+}
+
+#submit {
+  background-color: blue;
+  padding: 10px;
+  color: white;
+  border-radius: 5px;
+  margin: 20px auto;
+  font-size: larger;
+  text-align: center;
+}
+/* End of Filter */

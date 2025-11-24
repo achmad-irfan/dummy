@@ -10,7 +10,32 @@
   <h2>Browse Horror Movies</h2>
   <p>Easily explore top-rated films, latest releases, trending titles, and hidden gems. With advanced filters, detailed movie insights, and high-quality visuals, finding the perfect movie has never been easier.</p>
   <div class="filter">
-    <h3>Advanced Filter</h3>
+    <h3>🔍 Advanced Filter</h3>
+    <form method="post">
+      <div class="form-movie">
+        <div class="form-group name">
+          <label for="name">Name: </label>
+          <input id="name" type="text" name="name" placeholder="Insert Name" />
+        </div>
+        <div class="form-group country">
+          <label for="country">Country: </label>
+          <input id="country" type="text" name="country" placeholder="Insert Country" />
+        </div>
+        <div class="form-group lang">
+          <label for="lang">Language: </label>
+          <input id="lang" type="text" name="lang" placeholder="Insert Language" />
+        </div>
+        <div class="form-group ratingmovie">
+          <label for="rating">Rating: </label>
+          <input id="rating" type="text" name="rating" placeholder="Rating" />
+        </div>
+        <div class="form-group sort">
+          <label for="sorted">Sort By: </label>
+          <input id="sorted" type="text" name="sorted" placeholder="Sorted" />
+        </div>
+      </div>
+      <input id="submit" type="submit" value="Browse" />
+    </form>
   </div>
 </div>
 {% endblock %}
