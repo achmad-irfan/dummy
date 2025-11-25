@@ -17,9 +17,9 @@
           <label for="name">Name: </label>
           <input id="name" type="text" name="name" placeholder="Insert Name" />
         </div>
-        <div class="form-group release">
-          <label for="country">Release Year: </label>
-          <select id="release" name="release">
+        <div class="form-group year">
+          <label for="year">Release Year: </label>
+          <select id="year" name="year">
             <option value="2020-2025">2020–2025</option>
             <option value="2015-2019">2015–2019</option>
             <option value="2010-2014">2010–2014</option>
@@ -65,9 +65,33 @@
   </div>
   <div class="gallery-movie">
     <h3>&#x1F3AC; Browse Movie</h3>
-    {% for movie in movies %}
-    <h6>{{movie.poster_url}}</h6>
-    {% endfor %}
+    <div class="page-movie">
+      {% for m in movies %}
+      <a href="/movie/{{m.tmdb_id}}/">
+        <div class="poster-wrapper">
+          <img src="https://image.tmdb.org/t/p/w500{{ m.poster_path }}" alt="{{ m.title }}" width="150" />
+          <h6>{{m.title}}</h6>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="pagination">
+      {% if is_paginated %}
+      <div class="pagination">
+        {# PREV BUTTON #} {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">&laquo; Prev</a>
+        {% endif %} {# Window Pagination FIX #} {% for num in page_obj.paginator.page_range %} {# Hitung window range (10 nomor) #} {% if num >= page_obj.number|add:"-5" and num <= page_obj.number|add:"4" %} {% if num == page_obj.number %}
+        <span class="current">{{ num }}</span>
+        {% else %}
+        <a href="?page={{ num }}">{{ num }}</a>
+        {% endif %} {% endif %} {% endfor %} {# NEXT BUTTON #} {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">Next &raquo;</a>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
   </div>
 </div>
 {% endblock %}
