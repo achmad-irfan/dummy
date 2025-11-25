@@ -84,7 +84,7 @@ LANGUAGES = [
 
 class PageMovies(ListView):
     model = Movie
-    paginate_by = 12  # jumlah poster per halaman
+    paginate_by = 15  # jumlah poster per halaman
     template_name = 'browse/index.html'
     context_object_name = 'movies'
 
