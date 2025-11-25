@@ -29,6 +29,7 @@
   padding: 30px 60px;
   color: white;
   border-radius: 15px;
+  margin-bottom: 20px;
 }
 
 .form-movie {
@@ -63,7 +64,11 @@
   margin-bottom: 5px;
 }
 
-.form-group input {
+.form-group input,
+#rating,
+#sorted,
+#release,
+#lang {
   width: 100%;
   background-color: thistle;
   border-radius: 4px;
@@ -81,3 +86,10 @@
   text-align: center;
 }
 /* End of Filter */
+
+/* Gallery Movie */
+.gallery-movie {
+  color: white;
+  text-align: center;
+}
+/* End of Gallery Movie */
