@@ -41,20 +41,74 @@
       <h4>Biography:</h4>
       <p>{{ person.biography }}</p>
       <h4>Horror Filmography:</h4>
+
+      <!-- As Actor -->
+      {% if as_actor %}
+      <h4>As Actor :</h4>
       <div class="gallery-movie">
-         {% for film in films %}
-        <div class="poster-wrapper">
+         {% for film in as_actor %}
+          <div class="poster-wrapper">
           <a href="/movie/{{film.id}}/" class="movie-link">
           <img src="https://image.tmdb.org/t/p/w154{{ film.poster_path }}" width="60" />
             <h6>{{ film.title }} ({{ film.release_date|slice:":4" }})</h6> 
             <h6>as - {{ film.character }}</h6>
             </a>
-        </div>
+          </div>
         {% endfor %}
-        {% if fil.homepage %}
-        <p>Homepage : {{film.homepage}}</p>
-        {% endif %}
         </div>
+        {% endif %}
+        <!-- End of As Actor -->
+        
+        <!-- As Director -->
+        {% if as_director %}
+          <h4>As Director :</h4>
+      <div class="gallery-movie">
+         {% for film in as_director %}
+          <div class="poster-wrapper">
+          <a href="/movie/{{film.id}}/" class="movie-link">
+          <img src="https://image.tmdb.org/t/p/w154{{ film.poster_path }}" width="60" />
+            <h6>{{ film.title }} ({{ film.release_date|slice:":4" }})</h6> 
+            </a>
+          </div>
+          {% endfor %}
+          </div>
+        {% endif %}
+          <!-- End As Director -->
+
+
+         <!-- As Producer -->
+        {% if as_producer %}
+          <h4>As Producer :</h4>
+      <div class="gallery-movie">
+         {% for film in as_director %}
+          <div class="poster-wrapper">
+          <a href="/movie/{{film.id}}/" class="movie-link">
+          <img src="https://image.tmdb.org/t/p/w154{{ film.poster_path }}" width="60" />
+            <h6>{{ film.title }} ({{ film.release_date|slice:":4" }})</h6> 
+            </a>
+          </div>
+          {% endfor %}
+          </div>
+        {% endif %}
+          <!-- End As Director -->
+
+
+         <!-- As Writer -->
+        {% if as_writer %}
+          <h4>As Writer :</h4>
+      <div class="gallery-movie">
+         {% for film in as_director %}
+          <div class="poster-wrapper">
+          <a href="/movie/{{film.id}}/" class="movie-link">
+          <img src="https://image.tmdb.org/t/p/w154{{ film.poster_path }}" width="60" />
+            <h6>{{ film.title }} ({{ film.release_date|slice:":4" }})</h6> 
+            </a>
+          </div>
+          {% endfor %}
+          </div>
+        {% endif %}
+          <!-- End As Director -->
+        
     </div>
   </div>
   {% endif %}

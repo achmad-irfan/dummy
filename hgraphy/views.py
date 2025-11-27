@@ -29,13 +29,26 @@ class ActorView(TemplateView):
             person_detail["gender_text"] = GENDER_MAP.get(gender_id, "Unknown")
             context["person"] = person_detail
 
-            films = filmography(person_id)
-            cast_list = films.get("cast", [])
-            cast_list = sorted(cast_list, key=lambda x: x.get("release_date","") or "")
+            data = filmography(person_id)
+            cast_list = data['cast']
+            crew_list= data['crew']
             
-            horror_film = [f for f in cast_list if HORROR_GENRE_ID in f.get("genre_ids", [])]
-            context["films"] = horror_film
-
+            as_director = [m for m in crew_list if m.get("job") == "Director"]
+            as_producer = [m for m in crew_list if m.get("job") == "Producer"]
+            as_writer   = [m for m in crew_list if m.get("job") == "Writer"]
+            
+            def sort_by_year(list_film):
+                return sorted(
+                list_film,
+                key=lambda x: x.get("release_date", "") or "")
+            
+            context["as_actor"] = sort_by_year(cast_list)
+            context["as_director"] = sort_by_year(as_director)
+            context["as_producer"] = sort_by_year(as_producer)
+            context["as_writer"] = sort_by_year(as_writer)
+            # horror_film = [f for f in cast_list if HORROR_GENRE_ID in f.get("genre_ids", [])]
+            # context["films"] = horror_film
+            
             return context
 
         # fallback: kalau user submit nama manual tanpa memilih suggestion

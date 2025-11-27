@@ -49,11 +49,15 @@ ul {
 .gallery-movie {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 40px;
+  gap: 10px;
+}
+
+.poster-wrapper {
+  gap: 10px;
 }
 .poster-wrapper img {
-  width: 150px;
-  height: 200px;
+  height: 150px;
+  margin: 5px auto;
 }
 
 .poster-wrapper h6 {
