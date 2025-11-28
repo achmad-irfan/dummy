@@ -41,10 +41,11 @@
       <h4>Biography:</h4>
       <p>{{ person.biography }}</p>
       <h4>Horror Filmography:</h4>
-
+      <div class="table-filmography">
       <!-- As Actor -->
       {% if as_actor %}
-      <h4>As Actor :</h4>
+        <div class="table-item collapsed">
+          <h5>As Actor </h5>
       <table>
         <thead>
           <tr>
@@ -65,12 +66,17 @@
           {% endfor %}
         </tbody>
       </table>
+      <button class="toggle-btn">Show More</button>
+      </div>
       {% endif %}
         <!-- End of As Actor -->
         
+      
+        
       <!-- As Director -->
-      {% if as_director %}
-      <h4>As Director :</h4>
+       {% if as_director %}
+       <div class="table-item collapsed">
+      <h5>As Director</h5>
       <table>
         <thead>
           <tr>
@@ -89,12 +95,15 @@
           {% endfor %}
         </tbody>
       </table>
-      {% endif %}
+      <button class="toggle-btn">Show More</button>
+       </div>
+       {% endif %}
        <!-- End of As Director -->
       
       <!-- As Producer -->
       {% if as_producer %}
-      <h4>As Producer :</h4>
+      <div class="table-item collapsed">
+      <h5>As Producer</h5>
       <table>
         <thead>
           <tr>
@@ -113,15 +122,28 @@
           {% endfor %}
         </tbody>
       </table>
+      <button class="toggle-btn">Show More</button>
+      </div>
       {% endif %}
-       <!-- End of As Director -->
-        
+      </div>
+       <!-- End of As Producer -->
     </div>
   </div>
   {% endif %}
 </div>
 
 <script>
+
+document.querySelectorAll(".toggle-btn").forEach(btn => {
+  btn.addEventListener("click", function() {
+    const parent = this.closest(".table-item");
+    parent.classList.toggle("collapsed");
+
+    this.textContent = parent.classList.contains("collapsed")
+      ? "Show More"
+      : "Show Less";
+  });
+});
 const input = document.getElementById("actor-input");
 const box = document.getElementById("suggestions");
 
