@@ -61,7 +61,7 @@
             <td>{{film.title}}</td>
             <td>{{ film.release_date|slice:":4" }}</td>
             <td>{{ film.character }}</td>
-            <td><img src="https://image.tmdb.org/t/p/w154{{ film.poster_path }}" width="60" /></td>
+            <td><a href="/movie/{{film.id}}"><img src="https://image.tmdb.org/t/p/w154{{ film.poster_path }}" width="60" /></a></td>
           </tr>
           {% endfor %}
         </tbody>
@@ -90,7 +90,7 @@
           <tr>
             <td>{{film.title}}</td>
             <td>{{ film.release_date|slice:":4" }}</td>
-            <td><img src="https://image.tmdb.org/t/p/w154{{ film.poster_path }}" width="60" /></td>
+            <td><a href="/movie/{{film.id}}"><img src="https://image.tmdb.org/t/p/w154{{ film.poster_path }}" width="60" /></a></td>
           </tr>
           {% endfor %}
         </tbody>
@@ -117,7 +117,7 @@
           <tr>
             <td>{{film.title}}</td>
             <td>{{ film.release_date|slice:":4" }}</td>
-            <td><img src="https://image.tmdb.org/t/p/w154{{ film.poster_path }}" width="60" /></td>
+            <td><a href="/movie/{{film.id}}"><img src="https://image.tmdb.org/t/p/w154{{ film.poster_path }}" width="60" /></a></td>
           </tr>
           {% endfor %}
         </tbody>
