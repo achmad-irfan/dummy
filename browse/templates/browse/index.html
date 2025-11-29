@@ -22,13 +22,9 @@
           <label for="year">Release Year: </label>
           <select id="year" name="year">
             <option value="">-- Select Release Year --</option>
-            <option value="2020-2025">2020–2025</option>
-            <option value="2015-2019">2015–2019</option>
-            <option value="2010-2014">2010–2014</option>
-            <option value="2000-2009">2000–2009</option>
-            <option value="1990-1999">1990–1999</option>
-            <option value="1980-1989">1980–1989</option>
-            <option value="before-1980">Before 1980</option>
+            {% for year in years %}
+            <option value="{{year}}">{{year}}</option>
+            {% endfor %}
           </select>
         </div>
         <div class="form-group lang">
@@ -58,6 +54,7 @@
             <option value="release">Release Date</option>
             <option value="vote">Vote Average</option>
             <option value="title">Title</option>
+            <option value="popularity">Popularity</option>
           </select>
         </div>
       </div>
@@ -72,6 +69,7 @@
         <div class="poster-wrapper">
           <img src="https://image.tmdb.org/t/p/w500{{ m.poster_path }}" alt="{{ m.title }}" width="150" />
           <h6>{{m.title}}</h6>
+          <span class="rating">⭐ {{ m.vote_average|floatformat:1 }}</span>
         </div>
       </a>
       {% endfor %}
