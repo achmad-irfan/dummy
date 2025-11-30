@@ -4,6 +4,7 @@ from browse.models import Movie
 from django.db.models import Count, Avg
 from .utils import fig_to_base64
 import matplotlib.pyplot as plt
+import numpy as np
 
 SUBTITLE = (
     "Explore key insights into horror films, including ratings, release trends, "
@@ -154,6 +155,10 @@ class Analyst(TemplateView):
         fig5, ax5 = plt.subplots(figsize=(7,5))
 
         ax5.scatter(vote_count, ratings, alpha=0.7)
+        
+        z = np.polyfit(vote_count, vote_average, 1)   # cari garis linear terbaik
+        p = np.poly1d(z)
+        ax5.plot(vote_count, p(vote_count), linewidth=2)  
 
         ax5.set_title("Vote Count vs Vote Average (Top 1000 Most Votes)")
         ax5.set_xlabel("Vote Count")
