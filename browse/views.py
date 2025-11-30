@@ -6,6 +6,7 @@ from django.views.generic import ListView
 
 # Daftar bahasa tetap dikirim ke template
 YEARS = sorted(range(1970, 2026), reverse=True)
+SUBTITLE= "Easily explore top-rated films, latest releases, trending titles, and hidden gems. With advanced filters, detailed movie insights, and high-quality visuals, finding the perfect movie has never been easier."
 
 LANGUAGES = [
     { "code": "en", "name": "English" },
@@ -75,4 +76,5 @@ class PageMovies(ListView):
         context = super().get_context_data(**kwargs)
         context['languages'] = LANGUAGES
         context['years']= YEARS
+        context['subtitle']=SUBTITLE
         return context

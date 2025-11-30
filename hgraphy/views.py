@@ -12,6 +12,8 @@ GENDER_MAP = {
 }
 HORROR_GENRE_ID =27
 
+SUBTITLE= "HORROR FILMOGRAPHY: From visionary directors to unforgettable characters, this Horror Filmography highlights the creators, actors, and monsters that defined the genre across generations."
+
 # Create your views here.
 class ActorView(TemplateView):
     template_name = 'hgraphy/index.html'
@@ -47,10 +49,14 @@ class ActorView(TemplateView):
             context["as_director"] = sort_by_year(as_director)
             context["as_producer"] = sort_by_year(as_producer)
             context["as_writer"] = sort_by_year(as_writer)
+            
+            
             # horror_film = [f for f in cast_list if HORROR_GENRE_ID in f.get("genre_ids", [])]
             # context["films"] = horror_film
             
             return context
+        
+        context['subtitle']=  SUBTITLE
 
         # fallback: kalau user submit nama manual tanpa memilih suggestion
         if name:

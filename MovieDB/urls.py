@@ -24,7 +24,7 @@ urlpatterns = [
     path('',include('movies.urls')),
     path('browse/', include('browse.urls')),
     path('horrorgraphy/', include('hgraphy.urls')),
-    path('analyst', )
+    path('analyst', include('analyst.urls'))
 ]
 
 if settings.DEBUG:

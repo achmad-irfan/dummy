@@ -11,6 +11,14 @@
   font-weight: normal;
   font-style: normal;
 }
+
+.base {
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+
 body {
   background-color: black;
   margin: 0;
