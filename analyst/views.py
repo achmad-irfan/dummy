@@ -112,7 +112,7 @@ class Analyst(TemplateView):
         popularities = [m.popularity for m in top_movies]
         ratings = [m.vote_average for m in top_movies]
         
-        fig4, ax4 = plt.subplots(figsize=(7,5))
+        fig5, ax4 = plt.subplots(figsize=(7,5))
 
         ax4.scatter(popularities, ratings, alpha=0.7)
 
@@ -121,7 +121,7 @@ class Analyst(TemplateView):
         ax4.set_ylabel("Vote Average (0–10)")
 
         # background gelap elegan
-        fig4.patch.set_facecolor("#222222")
+        fig5.patch.set_facecolor("#222222")
         ax4.set_facecolor("#333333")
 
         # warna tulisan
@@ -134,8 +134,48 @@ class Analyst(TemplateView):
         plt.tight_layout()
 
         # convert ke base64 jika untuk Django
-        graph4 = fig_to_base64(fig4)
+        graph4 = fig_to_base64(fig5)
         context["graph4"] = graph4
+        
+        # ================================
+        # 5. Grafik: 
+        # Vote_Count vs Vote_average
+        # 
+        # ================================
+        top_votes = (
+            Movie.objects
+            .exclude(popularity=None)             
+            .exclude(vote_average=None)        
+            .order_by("-vote_count")[:50])
+
+        vote_count = [m.vote_count for m in top_votes]
+        vote_average = [m.vote_average for m in top_votes]
+        
+        fig5, ax5 = plt.subplots(figsize=(7,5))
+
+        ax5.scatter(vote_count, ratings, alpha=0.7)
+
+        ax5.set_title("Vote Count vs Vote Average (Top 1000 Most Votes)")
+        ax5.set_xlabel("Vote Count")
+        ax5.set_ylabel("Vote Average")
+
+        # background gelap elegan
+        fig5.patch.set_facecolor("#222222")
+        ax5.set_facecolor("#333333")
+
+        # warna tulisan
+        ax5.tick_params(colors="white")
+        ax5.title.set_color("white")
+        ax5.xaxis.label.set_color("white")
+        ax5.yaxis.label.set_color("white")
+        ax5.set_xlim(6000,10000)
+
+        # biar title dan plot tidak kepotong
+        plt.tight_layout()
+
+        # convert ke base64 jika untuk Django
+        graph5 = fig_to_base64(fig5)
+        context["graph5"] = graph5
 
 
         return context
