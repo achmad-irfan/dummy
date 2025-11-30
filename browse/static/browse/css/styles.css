@@ -93,6 +93,7 @@
 }
 
 .movie-list {
+  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 40px;
   margin-top: 30px;
@@ -100,6 +101,12 @@
 
 .poster-wrapper {
   box-shadow: 0 0 12px rgba(233, 3, 3, 0.333), 0 0 25px #0ff3 inset;
+}
+
+.poster-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 /* End of Gallery Movie */
 
@@ -196,15 +203,19 @@
   }
 
   .movie-list {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
     gap: 10px;
-    margin-top: 10px;
   }
 
-  /* Paginator */
   .gallery-movie {
     margin: 10px auto;
   }
+
+  .rating {
+    font-size: 8px;
+  }
+
+  /* Paginator */
 
   .page-movie {
     display: flex;
@@ -221,34 +232,5 @@
 
   .page-movie img:hover {
     transform: scale(1.05);
-  }
-
-  .pagination {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-
-  .pagination a,
-  .pagination span {
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    text-decoration: none;
-    color: #333;
-    transition: background 0.3s, color 0.3s;
-  }
-
-  .pagination a:hover {
-    background-color: #333;
-    color: #fff;
-  }
-
-  .pagination .current {
-    background-color: #333;
-    color: #fff;
-    font-weight: bold;
   }
 }
