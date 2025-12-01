@@ -11,3 +11,4 @@ mysqlclient==2.2.4
 numpy
 requests
 matplotlib
+python-decouple
