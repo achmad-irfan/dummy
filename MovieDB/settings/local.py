@@ -18,6 +18,6 @@ DATABASES = {
     }
 }
 
-STATIC_URL = '/static/'
+STATIC_URL = '/statics/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')]

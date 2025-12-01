@@ -15,6 +15,7 @@ DATABASES = {
     }
 }
 
+STATIC_URL = '/statics/'
 STATIC_ROOT = "/home/wwwachm1/HORROR/staticfiles_"
 MEDIA_ROOT  = "/home/wwwachm1/HORROR/mediafiles_"
 
