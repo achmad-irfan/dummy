@@ -15,5 +15,5 @@ DATABASES = {
     }
 }
 
-STATIC_ROOT = "/home/wwwachm1/public_html/portfolio_static"
-MEDIA_ROOT = '/home/wwwachm1/public_html/portfolio_media'
+STATIC_ROOT = "/home/wwwachm1/HORROR/staticfiles"
+MEDIA_ROOT = '/home/wwwachm1/HORROR/mediafiles'
