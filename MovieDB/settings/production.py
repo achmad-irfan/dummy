@@ -15,6 +15,6 @@ DATABASES = {
     }
 }
 
-STATIC_ROOT = "/home/wwwachm1/public_horror-db/static"
-MEDIA_ROOT  = "/home/wwwachm1/public_horror-db/media"
+STATIC_ROOT = "/home/wwwachm1/HORROR/staticfiles"
+MEDIA_ROOT  = "/home/wwwachm1/HORROR/mediafiles"
 
