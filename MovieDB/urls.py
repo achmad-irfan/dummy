@@ -22,10 +22,7 @@ import os
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('movies.urls')),
-    path('browse/', include('browse.urls')),
-    path('horrorgraphy/', include('hgraphy.urls')),
-    path('analyst', include('analyst.urls'))
+    path('',include('movies.urls'))
 ]
 
 
